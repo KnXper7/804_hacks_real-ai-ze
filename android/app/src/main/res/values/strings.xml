@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Real-AI-ze</string>
+    <string name="title_activity_main">Real-AI-ze</string>
+    <string name="package_name">com.hacks804.realaize</string>
+    <string name="custom_url_scheme">com.hacks804.realaize</string>
+</resources>
