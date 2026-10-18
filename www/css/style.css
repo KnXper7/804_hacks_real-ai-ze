@@ -655,3 +655,44 @@ select {
     transform: none;
   }
 }
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.screen[hidden] {
+  display: none;
+}
+
+.hero,
+.home-section,
+.stat-list,
+.results-main,
+.results-section,
+.actions,
+.pledge,
+.share {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.home-section,
+.results-section,
+.share {
+  gap: 14px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
