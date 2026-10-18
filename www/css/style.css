@@ -17,7 +17,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { margin: 0; background: #e8eeef; }
 body { min-height: 100vh; }
 h1, h2, h3, p { margin: 0; }
@@ -34,17 +34,28 @@ button { font: inherit; color: inherit; }
 }
 
 .topbar {
-  position: sticky; top: 0; z-index: 10;
+  position: sticky; top: 10px; z-index: 10;
   display: flex; align-items: center; justify-content: space-between;
   padding: calc(var(--safe-top) + 12px) 20px 12px;
   background: rgba(255,255,255,.92);
   backdrop-filter: blur(5px);
   border-bottom: 1px solid var(--line);
+  border-radius: 1rem;
+  box-shadow: 0 5px 20px rgb(39, 39, 39, 0.15);
+  backdrop-filter: blur(5px);
+}
+
+.text-content-1 {
+  margin-bottom: 2rem;
 }
 .topbar__title { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; }
 .logo { width: 30px; height: 30px; border-radius: 50%; }
-.icon-btn { background: none; border: 0; padding: 4px; cursor: pointer; }
+.icon-btn { background-color: #ffffff; border-radius: 1rem; border: 0; padding: 6px 6px 3px 6px; cursor: pointer; transition: all 0.3s ease; }
 svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.icon-btn:hover {
+  background-color: #CBFFFC;
+}
 
 /* ---------- Main view ---------- */
 .view {
@@ -58,7 +69,6 @@ svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width:
 .h1--sm { font-size: 28px; }
 .h2 { font-size: 22px; font-weight: 700; }
 .lead { font-size: 16px; line-height: 1.45; color: var(--muted); }
-.muted { color: var(--muted); font-size: 13px; }
 .stack { display: flex; flex-direction: column; gap: 8px; }
 .stack-lg { display: flex; flex-direction: column; gap: 12px; }
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
