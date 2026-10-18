@@ -344,7 +344,7 @@
 
     $$('.screen').forEach((s) => { s.hidden = s !== screen; });
     $$('.tabbar a').forEach((a) => a.classList.toggle('active', a.dataset.tab === key));
-    $('.tabbar').hidden = false;
+    $('.tabbar').hidden = key === 'home' || key === 'setup';
     setText('page-title', screen.dataset.title);
     view.classList.toggle('has-sheet', screen.hasAttribute('data-sheet'));
 
