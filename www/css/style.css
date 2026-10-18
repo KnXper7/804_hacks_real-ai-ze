@@ -619,15 +619,17 @@ select {
 }
 
 .tabbar {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   max-width: 480px;
   z-index: 10;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  gap: 1.5rem;
   padding: 8px 8px calc(var(--safe-bottom) + 8px);
   background: rgba(250,251,251,.96);
   backdrop-filter: blur(10px);
@@ -638,12 +640,13 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 3px;
   font-size: 11px;
   font-weight: 500;
   color: #8c9a9d;
   border-radius: 0.5rem;
-  padding: 4px 0;
+  padding: 0.5rem 2.5rem;
   transition: all 0.45s ease;
   cursor: pointer;
 }
