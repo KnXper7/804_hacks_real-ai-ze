@@ -9,6 +9,7 @@
   const byId = (id) => ACTIVITIES.find((a) => a.id === id);
 
   const DEFAULT = {
+    seenLanding: false,
     setupDone: false,
     ais: ['chatgpt'],
     notifications: false,
@@ -19,7 +20,7 @@
   function load() {
     try {
       const saved = JSON.parse(localStorage.getItem('realaize-v3') || 'null');
-      if (saved) return { ...structuredClone(DEFAULT), ...saved, habits: { ...DEFAULT.habits, ...saved.habits } };
+      if (saved) return { ...structuredClone(DEFAULT), seenLanding: !!saved.setupDone, ...saved, habits: { ...DEFAULT.habits, ...saved.habits } };
       const old = JSON.parse(localStorage.getItem('realaize-v2') || 'null');
       if (old) {
         const habits = { small: old.habits?.smallPerWeek ?? 100, big: old.habits?.bigPerWeek ?? 20 };
@@ -140,6 +141,15 @@
     $$('[data-notify-status]').forEach((el) => { el.textContent = text; });
   }
 
+
+  // Landing page (Home) is only shown the very first time the app opens.
+  $('#get-started').addEventListener('click', (e) => {
+    e.preventDefault();
+    state.seenLanding = true;
+    save();
+    location.hash = state.setupDone ? '#calc' : '#setup';
+    route();
+  });
 
   $('#setup-done').addEventListener('click', () => {
     state.setupDone = true;
@@ -319,14 +329,15 @@
   const view = $('#view');
 
   function route() {
-    let key = (location.hash || '#home').slice(1);
-    if (!state.setupDone) key = 'setup';
-    else if (key === 'setup' || !document.getElementById('screen-' + key)) key = 'home';
+    let key = location.hash.slice(1);
+    if (!state.seenLanding) key = 'home';
+    else if (!state.setupDone) key = 'setup';
+    else if (['', 'home', 'setup'].includes(key) || !document.getElementById('screen-' + key)) key = 'results';
     const screen = document.getElementById('screen-' + key);
 
     $$('.screen').forEach((s) => { s.hidden = s !== screen; });
     $$('.tabbar a').forEach((a) => a.classList.toggle('active', a.dataset.tab === key));
-    $('.tabbar').hidden = key === 'setup';
+    $('.tabbar').hidden = key === 'setup' || key === 'home';
     setText('page-title', screen.dataset.title);
     view.classList.toggle('has-sheet', screen.hasAttribute('data-sheet'));
 

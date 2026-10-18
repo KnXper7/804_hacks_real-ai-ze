@@ -635,8 +635,9 @@ select {
   width: 100%;
   max-width: 480px;
   z-index: 10;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
   padding: 8px 8px calc(var(--safe-bottom) + 8px);
   background: rgba(250,251,251,.96);
   backdrop-filter: blur(10px);
@@ -652,13 +653,13 @@ select {
   font-weight: 500;
   color: #8c9a9d;
   border-radius: 0.5rem;
-  padding: 4px 0;
+  padding: 10px 40px;
   transition: all 0.45s ease;
   cursor: pointer;
 }
 
 .tabbar a:hover {
-  background-color: #CBFFFC;
+  background-color: #cbfffcc3;
 }
 
 .tabbar a.active {
@@ -701,11 +702,11 @@ select {
 @keyframes fade {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: scale(.95);
   }
   to {
     opacity: 1;
-    transform: none;
+    transform: scale(1);
   }
 }
 
