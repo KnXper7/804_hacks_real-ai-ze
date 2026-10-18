@@ -1,5 +1,10 @@
 {
   "appId": "com.hacks804.realaize",
   "appName": "Real-AI-ze",
-  "webDir": "www"
+  "webDir": "www",
+  "plugins": {
+    "SystemBars": {
+      "style": "DARK"
+    }
+  }
 }

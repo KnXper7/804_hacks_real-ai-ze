@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="112" viewBox="0 0 120 56">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d7ead0"/>
+      <stop offset="0.5" stop-color="#bcdcb3"/>
+      <stop offset="1" stop-color="#cfe5c6"/>
+    </linearGradient>
+    <radialGradient id="seal" cx="0.5" cy="0.45" r="0.6">
+      <stop offset="0" stop-color="#e8f3e3"/>
+      <stop offset="1" stop-color="#c3dfba"/>
+    </radialGradient>
+    <pattern id="lines" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="4" stroke="#a7cc9e" stroke-width="0.6" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect x="0.75" y="0.75" width="118.5" height="54.5" rx="4" fill="url(#paper)" stroke="#8fbb86" stroke-width="1.2"/>
+  <rect x="0.75" y="0.75" width="118.5" height="54.5" rx="4" fill="url(#lines)"/>
+  <rect x="6" y="6" width="108" height="44" rx="3" fill="none" stroke="#86b47d" stroke-width="0.9" stroke-dasharray="2 1.2" opacity="0.8"/>
+  <ellipse cx="60" cy="28" rx="16" ry="17" fill="url(#seal)" stroke="#86b47d" stroke-width="1"/>
+  <ellipse cx="60" cy="28" rx="12.5" ry="13.5" fill="none" stroke="#9fc596" stroke-width="0.6"/>
+  <text x="60" y="35" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="21" font-weight="700" fill="#4f7f4a" fill-opacity="0.85">$</text>
+  <circle cx="22" cy="28" r="8" fill="none" stroke="#9fc596" stroke-width="0.8"/>
+  <circle cx="98" cy="28" r="8" fill="none" stroke="#9fc596" stroke-width="0.8"/>
+  <text x="13" y="17" font-family="Georgia, serif" font-size="10" font-weight="700" fill="#5d8d57" fill-opacity="0.85">1</text>
+  <text x="101" y="47" font-family="Georgia, serif" font-size="10" font-weight="700" fill="#5d8d57" fill-opacity="0.85">1</text>
+  <text x="104" y="17" font-family="Georgia, serif" font-size="10" font-weight="700" fill="#5d8d57" fill-opacity="0.85">1</text>
+  <text x="11" y="47" font-family="Georgia, serif" font-size="10" font-weight="700" fill="#5d8d57" fill-opacity="0.85">1</text>
+</svg>
