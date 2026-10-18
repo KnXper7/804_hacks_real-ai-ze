@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0a171c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
   <title>Real-AI-ze</title>
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="css/style.css">
@@ -11,13 +14,15 @@
 <body>
   <div class="app">
     <header class="topbar">
-      <div class="topbar__title">
-        <img src="assets/logo.png" alt="" class="logo">
-        <span id="page-title">Real-AI-ze</span>
+    <a href="./index.html">
+        <div class="topbar__title">
+            <img src="assets/logo.png" alt="" class="logo">
+            <span id="page-title">Real-AI-ze</span>
       </div>
-      <button class="icon-btn" id="info-btn" aria-label="About the numbers">
+    </a>
+      <div class="icon-btn" id="info-btn" aria-label="About the numbers">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      </button>
+      </div>
     </header>
 
     <main id="view" class="view"></main>
@@ -45,7 +50,7 @@
   <dialog id="info-dialog" class="sheet">
     <div class="text-content-1">
         <h2>About the numbers</h2>
-        <p>Real-<b>AI</b>-ze turns your AI habits into an estimate of energy, water and CO₂ using published per-prompt research and Virginia's power grid.</p>
+        <p>Real-AI-ze turns your AI habits into an estimate of energy, water and CO₂ using published per-prompt research and Virginia's power grid.</p>
         <p>These are <strong>estimates</strong>, not exact measurements. Real numbers depend on the model, the data center and the time of day.</p>
     </div>
     <form method="dialog"><button class="btn btn--primary btn--block">Got it</button></form>

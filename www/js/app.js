@@ -1,9 +1,7 @@
-// Real-AI-ze — single-page app (no build step; Capacitor serves www/ as-is)
 (() => {
   const F = window.FACTORS;
   const TIPS = window.TIPS;
 
-  // ---------------- State ----------------
   const DEFAULT = {
     habits: { chatsPerDay: 25, imagesPerWeek: 10, videosPerMonth: 2, model: 'standard', location: 'VA' },
     tips: ['small', 'batch'],
@@ -20,15 +18,14 @@
   }
   function save() { try { localStorage.setItem('realaize', JSON.stringify(state)); } catch (e) {} }
 
-  // ---------------- Math ----------------
   const LOCATION = {
     VA: { label: 'Virginia (PJM grid)', co2: F.co2KgPerKWh },
-    US: { label: 'Elsewhere in the US', co2: 0.37 }, // TODO verify US average grid intensity
+    US: { label: 'Elsewhere in the US', co2: 0.37 },
   };
 
   function footprint(h, co2Factor = 1) {
     const m = F.model[h.model] ?? 1;
-    const share = h.chatModelShare || 0; // portion of chats moved to a small model
+    const share = h.chatModelShare || 0;
     const chatMult = share * F.model.small + (1 - share) * m;
     const wh = h.chatsPerDay * 365 * F.energyWh.chat * chatMult
              + h.imagesPerWeek * 52 * F.energyWh.image * m
@@ -59,7 +56,6 @@
     return n.toFixed(1);
   }
 
-  // ---------------- Icons ----------------
   const ICON = {
     bolt: '<svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg>',
     drop: '<svg viewBox="0 0 24 24"><path d="M12 2.7s-6 6.6-6 11.3a6 6 0 0 0 12 0c0-4.7-6-11.3-6-11.3z"/></svg>',
@@ -79,7 +75,6 @@
       <div class="stat__label">${label}</div>
     </div>`;
 
-  // ---------------- Screens ----------------
   const screens = {
     home: {
       title: 'Real-AI-ze',
@@ -87,26 +82,29 @@
         <div class="stack">
           <p class="eyebrow">804 Hacks · Virginia data centers</p>
           <h1 class="h1">What does your AI habit really cost the planet?</h1>
-          <p class="lead">See your yearly energy, water, and CO₂ footprint in 60 seconds — then shrink it.</p>
+          <p class="lead">See your yearly energy, water, and CO₂ footprint in 60 seconds — then <b>shrink it<b>.</p>
         </div>
         <div class="hero-art"><img src="assets/logo.png" alt=""></div>
         <a href="#calc" class="btn btn--primary btn--block">Calculate my footprint →</a>
 
-        <h2 class="h2">Why it matters</h2>
-        ${stat('server', '#1', 'Virginia hosts more data centers than anywhere else on Earth')}
-        ${stat('bolt', 'XX%', 'of Virginia’s electricity goes to data centers [add verified stat]')}
-        ${stat('drop', 'Millions', 'of liters of water a day can go to cooling data centers [add verified stat]')}
+        <h2 class="h2 why-it-matters">Why it matters</h2>
+        <div class="boxes">
+          ${stat('server', '#1', 'Virginia hosts more data centers than anywhere else on Earth.')}
+          ${stat('bolt', '25%', 'of Virginia’s electricity goes to data centers.')}
+          ${stat('drop', '19 million liters', 'of water a day can go to cooling data centers.')}
+        </div>
 
-        <h2 class="h2">How it works</h2>
+        <h2 class="h2 how-it-works">How it works</h2>
         <div class="steps">
           <div class="step"><span class="step__num">1</span>Tell us your AI habits</div>
           <div class="step"><span class="step__num">2</span>See your footprint in things you can picture</div>
           <div class="step"><span class="step__num">3</span>Get tips to shrink it &amp; share your card</div>
+          <div class="step"><span class="step__num">4</span>Lessen the impact of AI usage on our green world.</div>
         </div>`,
     },
 
     calc: {
-      title: 'Calculator',
+      title: 'Real-AI-ze',
       sheet: true,
       render: () => {
         const h = state.habits;
@@ -172,7 +170,7 @@
     },
 
     results: {
-      title: 'Your Results',
+      title: 'Real-AI-ze',
       render: () => {
         const h = state.habits, f = baseline();
         const avg = footprint({ ...F.averageStudent, location: h.location });
@@ -224,7 +222,7 @@
     },
 
     act: {
-      title: 'Take Action',
+      title: 'Real-AI-ze',
       render: () => {
         const b = baseline(), a = after();
         const max = b.water || 1;
@@ -260,7 +258,7 @@
         root.querySelectorAll('[data-tip]').forEach((btn) => btn.addEventListener('click', () => {
           const id = btn.dataset.tip;
           state.tips = state.tips.includes(id) ? state.tips.filter((x) => x !== id) : [...state.tips, id];
-          save(); route(); // re-render with new numbers
+          save(); route();
         }));
         root.querySelector('#pledge')?.addEventListener('click', () => { state.pledged = true; save(); route(); });
         drawCard(root.querySelector('#card'));
@@ -269,7 +267,6 @@
     },
   };
 
-  // ---------------- Share card ----------------
   function drawCard(cv) {
     const c = cv.getContext('2d'), b = baseline(), a = after();
     const g = c.createLinearGradient(0, 0, 0, 1080);
@@ -299,7 +296,6 @@
     } catch (e) { /* user cancelled share */ }
   }
 
-  // ---------------- Router ----------------
   const view = document.getElementById('view');
   function route() {
     const key = (location.hash || '#home').slice(1);
@@ -307,7 +303,7 @@
     document.getElementById('page-title').textContent = s.title;
     document.querySelectorAll('.tabbar a').forEach((a) => a.classList.toggle('active', a.dataset.tab === key || (!screens[key] && a.dataset.tab === 'home')));
     view.classList.toggle('has-sheet', !!s.sheet);
-    const scroll = view.dataset.key === key ? window.scrollY : 0; // keep scroll when re-rendering same screen
+    const scroll = view.dataset.key === key ? window.scrollY : 0;
     view.innerHTML = s.render();
     view.dataset.key = key;
     s.bind?.(view);
