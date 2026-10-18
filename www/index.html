@@ -2,25 +2,274 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0a171c">
-  <title>Real-AI-ze — What does your AI habit cost?</title>
-  <link rel="icon" href="assets/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <title>Real-AI-ze</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="app">
+
     <header class="topbar">
-      <div class="topbar__title">
-        <img src="assets/logo.png" alt="" class="logo">
-        <span id="page-title">Real-AI-ze</span>
-      </div>
-      <button class="icon-btn" id="info-btn" aria-label="About the numbers">
+      <a href="./index.html">
+        <div class="topbar__title">
+          <img src="assets/logo.png" alt="" class="logo">
+          <span id="page-title">Real-AI-ze</span>
+        </div>
+      </a>
+      <div class="icon-btn" id="info-btn" role="button" tabindex="0" aria-label="About the numbers">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      </button>
+      </div>
     </header>
 
-    <main id="view" class="view"></main>
+    <main id="view" class="view">
+
+      <!-- ===================== SETUP (first launch only) ===================== -->
+      <section class="screen" id="screen-setup" data-title="Real-AI-ze" hidden>
+
+        <div class="screen__header stack">
+          <h1 class="h1">Welcome to Real-AI-ze</h1>
+          <p class="lead">Find out what your AI habits cost the planet. Let’s set things up.</p>
+        </div>
+
+        <div class="setup-art">
+          <img src="assets/logo.png" alt="">
+        </div>
+
+        <div class="settings-group">
+          <h2 class="h2">Which AIs do you use?</h2>
+          <div class="chips" data-ai-chips>
+            <button class="chip" data-ai="chatgpt">ChatGPT</button>
+            <button class="chip" data-ai="claude">Claude</button>
+            <button class="chip" data-ai="gemini">Gemini</button>
+            <button class="chip" data-ai="copilot">Copilot</button>
+            <button class="chip" data-ai="other">Other</button>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <label class="toggle-row">
+            <span class="toggle-row__text">
+              <span class="toggle-row__title">Push notifications</span>
+              <span class="toggle-row__desc">A weekly reminder to check your AI footprint</span>
+            </span>
+            <input type="checkbox" class="toggle" data-notify-toggle>
+          </label>
+          <p class="muted" data-notify-status></p>
+        </div>
+
+        <button class="btn btn--primary btn--block" id="setup-done">Get started →</button>
+
+      </section>
+
+      <!-- ===================== HOME ===================== -->
+      <section class="screen" id="screen-home" data-title="Real-AI-ze" hidden>
+
+        <div class="screen__header stack">
+          <h1 class="h1">What does your AI habit really cost the planet?</h1>
+          <p class="lead">See your yearly energy, water, and CO₂ footprint in 60 seconds — then <b>shrink it</b>.</p>
+        </div>
+
+        <div class="hero">
+          <div class="hero-art">
+            <img src="assets/logo.png" alt="">
+          </div>
+          <a href="#calc" class="btn btn--primary btn--block">Adjust my AI footprint →</a>
+        </div>
+
+        <div class="home-section">
+          <h2 class="h2 why-it-matters">Why it matters</h2>
+          <div class="stat-list boxes">
+            <div class="card">
+              <div class="stat__icon">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><path d="M6 7h.01M6 17h.01"/></svg>
+              </div>
+              <div class="stat__value">#1</div>
+              <div class="stat__label">Virginia hosts more data centers than anywhere else on Earth.</div>
+            </div>
+            <div class="card">
+              <div class="stat__icon">
+                <svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg>
+              </div>
+              <div class="stat__value">25%</div>
+              <div class="stat__label">of Virginia’s electricity goes to data centers.</div>
+            </div>
+            <div class="card">
+              <div class="stat__icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2.7s-6 6.6-6 11.3a6 6 0 0 0 12 0c0-4.7-6-11.3-6-11.3z"/></svg>
+              </div>
+              <div class="stat__value">19 million liters</div>
+              <div class="stat__label">of water a day can go to cooling data centers.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-section">
+          <h2 class="h2 how-it-works">How it works</h2>
+          <div class="steps">
+            <div class="step"><span class="step__num">1</span><span>Tell us how you use AI each week</span></div>
+            <div class="step"><span class="step__num">2</span><span>See your water, money and CO₂ cost</span></div>
+            <div class="step"><span class="step__num">3</span><span>Get a rating out of 10 and adjust your habits</span></div>
+            <div class="step"><span class="step__num">4</span><span class="num-4">Lessen the impact of AI usage on our green world.</span></div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ===================== CALCULATOR ===================== -->
+      <section class="screen" id="screen-calc" data-title="Real-AI-ze" hidden>
+
+        <div class="screen__header stack">
+          <h1 class="h1 h1--sm">How do you use AI each week?</h1>
+          <p class="muted">Rough guesses are fine.</p>
+        </div>
+
+        <div class="form" id="fields"></div>
+
+        <div class="add-more">
+          <button class="btn btn--block btn--dashed" id="add-toggle" aria-expanded="false">+ Add something else</button>
+          <div class="add-panel" id="add-panel" hidden>
+            <p class="muted">Tap anything else you use AI for:</p>
+            <div class="chips" id="add-options"></div>
+          </div>
+        </div>
+
+        <template id="field-template">
+          <div class="field">
+            <div class="field__head">
+              <span class="field__label"></span>
+              <div class="field__actions">
+                <span class="pill"></span>
+                <button class="field__remove" aria-label="Remove">
+                  <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
+              </div>
+            </div>
+            <span class="field__help"></span>
+            <input type="range" min="0">
+            <div class="range-labels"><span>0</span><span class="range-max"></span></div>
+          </div>
+        </template>
+
+        <template id="add-option-template">
+          <button class="chip chip--add"></button>
+        </template>
+
+      </section>
+
+      <!-- ===================== RESULTS ===================== -->
+      <section class="screen" id="screen-results" data-title="Real-AI-ze" hidden>
+
+        <div class="rating" id="rating">
+          <div class="rating__score"><span id="rating-score">0</span><small>/10</small></div>
+          <p class="rating__text" id="rating-text"></p>
+        </div>
+
+        <div class="visuals">
+          <div class="tank" aria-label="Water used per year">
+            <div class="tank__stream" id="tank-stream"></div>
+            <div class="tank__water" id="tank-water">
+              <svg class="tank__wave" viewBox="0 0 400 20" preserveAspectRatio="none"><path d="M0 10 Q 50 0 100 10 T 200 10 T 300 10 T 400 10 V 20 H 0 Z"/></svg>
+              <svg class="tank__wave tank__wave--back" viewBox="0 0 400 20" preserveAspectRatio="none"><path d="M0 10 Q 50 20 100 10 T 200 10 T 300 10 T 400 10 V 20 H 0 Z"/></svg>
+            </div>
+            <div class="tank__label">
+              <div class="tank__value"><span id="res-water">0</span> L</div>
+              <div class="tank__caption">of water / year</div>
+            </div>
+          </div>
+
+          <div class="cash" aria-label="Electricity cost per year">
+            <div class="cash__rain" id="cash-rain"></div>
+            <div class="cash__pile" id="cash-pile"></div>
+            <div class="tank__label">
+              <div class="tank__value">$<span id="res-cash">0</span></div>
+              <div class="tank__caption">of electricity / year</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="per-prompt">That’s about <strong id="pp-water">0 mL</strong> of water and <strong id="pp-cash">$0</strong> of electricity <strong>every prompt</strong>.</p>
+
+        <template id="bill-template">
+          <img class="bill" src="assets/dollar.svg" alt="" aria-hidden="true">
+        </template>
+
+        <div class="impact-list">
+          <div class="impact">
+            <div class="impact__icon impact__icon--water">
+              <svg viewBox="0 0 24 24"><path d="M10 2h4v3l2 3v12a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V8l2-3z"/><path d="M8 12h8"/></svg>
+            </div>
+            <div class="impact__text">
+              <div class="impact__value"><span id="res-bottles">0</span> water bottles</div>
+              <div class="impact__label">used to cool data centers and make their power</div>
+            </div>
+          </div>
+
+          <div class="impact">
+            <div class="impact__icon impact__icon--money">
+              <svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="impact__text">
+              <div class="impact__value">$<span id="res-bill">0</span> of electricity</div>
+              <div class="impact__label"><span id="res-kwh">0</span> kWh — what it would add to an electric bill</div>
+            </div>
+          </div>
+
+          <div class="impact">
+            <div class="impact__icon impact__icon--co2">
+              <svg viewBox="0 0 24 24"><path d="M5 17h14M5 17a2 2 0 1 0 4 0M15 17a2 2 0 1 0 4 0M3 17v-4l2-5h14l2 5v4"/></svg>
+            </div>
+            <div class="impact__text">
+              <div class="impact__value"><span id="res-miles">0</span> miles of driving</div>
+              <div class="impact__label"><span id="res-co2">0</span> kg of CO₂ — same as a gas car</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#calc" class="btn btn--block">Change my answers</a>
+
+      </section>
+
+      <!-- ===================== SETTINGS ===================== -->
+      <section class="screen" id="screen-settings" data-title="Real-AI-ze" hidden>
+
+        <div class="settings-group">
+          <h2 class="h2">Your AIs</h2>
+          <div class="chips" data-ai-chips>
+            <button class="chip" data-ai="chatgpt">ChatGPT</button>
+            <button class="chip" data-ai="claude">Claude</button>
+            <button class="chip" data-ai="gemini">Gemini</button>
+            <button class="chip" data-ai="copilot">Copilot</button>
+            <button class="chip" data-ai="other">Other</button>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <h2 class="h2">Notifications</h2>
+          <label class="toggle-row">
+            <span class="toggle-row__text">
+              <span class="toggle-row__title">Push notifications</span>
+              <span class="toggle-row__desc">A weekly reminder to check your AI footprint</span>
+            </span>
+            <input type="checkbox" class="toggle" data-notify-toggle>
+          </label>
+          <p class="muted" id="notify-status" data-notify-status></p>
+        </div>
+
+        <div class="settings-group">
+          <h2 class="h2">Your habits</h2>
+          <a href="#calc" class="btn btn--block">Edit my AI habits</a>
+        </div>
+
+        <button class="btn btn--block btn--danger" id="reset">Reset app</button>
+
+      </section>
+
+    </main>
 
     <nav class="tabbar" aria-label="Main">
       <a href="#home" data-tab="home">
@@ -29,25 +278,29 @@
       </a>
       <a href="#calc" data-tab="calc">
         <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h8"/></svg>
-        <span>Calculate</span>
+        <span>Adjust</span>
       </a>
       <a href="#results" data-tab="results">
         <svg viewBox="0 0 24 24"><path d="M3 3v18h18M8 17v-5M13 17V8M18 17v-3"/></svg>
         <span>Results</span>
       </a>
-      <a href="#act" data-tab="act">
-        <svg viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
-        <span>Act</span>
+      <a href="#settings" data-tab="settings">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>Settings</span>
       </a>
     </nav>
+
   </div>
 
   <dialog id="info-dialog" class="sheet">
-    <h2>About the numbers</h2>
-    <p>Real-AI-ze turns your AI habits into an estimate of energy, water and CO₂ using published per-prompt research and Virginia's power grid.</p>
-    <p>These are <strong>estimates</strong>, not exact measurements. Real numbers depend on the model, the data center and the time of day.</p>
-    <p class="muted">Sources: [add your sources here — JLARC 2024, EIA, per-prompt studies]</p>
-    <form method="dialog"><button class="btn btn--primary btn--block">Got it</button></form>
+    <div class="text-content-1">
+      <h2>About the numbers</h2>
+      <p>Real-AI-ze turns your AI habits into an estimate of energy, water and CO₂ using published per-prompt research and Virginia's power grid.</p>
+      <p>These are <strong>estimates</strong>, not exact measurements. Real numbers depend on the model, the data center and the time of day.</p>
+    </div>
+    <form method="dialog">
+      <button class="btn btn--primary btn--block">Got it</button>
+    </form>
   </dialog>
 
   <script src="js/data.js"></script>
